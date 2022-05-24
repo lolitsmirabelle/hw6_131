@@ -383,7 +383,7 @@ pre code {
 ## x dplyr::filter()  masks stats::filter()
 ## x dplyr::lag()     masks stats::lag()
 ## x recipes::step()  masks stats::step()
-## • Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
+## • Learn how to get started at https://www.tidymodels.org/start/</code></pre>
 <pre class="r"><code>library(ISLR) 
 library(ISLR2) </code></pre>
 <pre><code>## 
@@ -410,11 +410,20 @@ library(klaR) # for naive bayes</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
 ## 
 ##     select</code></pre>
-<pre class="r"><code>tidymodels_prefer()</code></pre>
+<pre class="r"><code>tidymodels_prefer()
+library(rpart.plot)</code></pre>
+<pre><code>## Loading required package: rpart</code></pre>
+<pre><code>## 
+## Attaching package: &#39;rpart&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dials&#39;:
+## 
+##     prune</code></pre>
+<pre class="r"><code>library(vip)
+library(janitor)
+library(xgboost)</code></pre>
 <div id="question-1" class="section level2">
 <h2>Question 1</h2>
-<pre class="r"><code>library(janitor)
-pokemon_og &lt;- read.csv(&quot;~/Downloads/homework-6/data/pokemon.csv&quot;)
+<pre class="r"><code>pokemon_og &lt;- read.csv(&quot;~/Downloads/homework-6/data/pokemon.csv&quot;)
 pokemon &lt;- clean_names(pokemon_og)
 
 classes &lt;- c(&#39;Bug&#39;, &#39;Fire&#39;, &#39;Grass&#39;, &#39;Normal&#39;, &#39;Water&#39;, &#39;Psychic&#39;)

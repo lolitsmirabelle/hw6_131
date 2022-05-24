@@ -18,12 +18,15 @@ library(poissonreg)
 library(corrr)
 library(klaR) # for naive bayes
 tidymodels_prefer()
+library(rpart.plot)
+library(vip)
+library(janitor)
+library(xgboost)
 ```
 
 ## Question 1
 
 ```{r}
-library(janitor)
 pokemon_og <- read.csv("~/Downloads/homework-6/data/pokemon.csv")
 pokemon <- clean_names(pokemon_og)
 
