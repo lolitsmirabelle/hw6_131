@@ -1,0 +1,54 @@
+---
+title: "Homework 6"
+output: html_document
+date: '2022-05-24'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidymodels)
+library(ISLR) 
+library(ISLR2) 
+library(ggplot2)
+library(discrim)
+library(poissonreg)
+library(corrr)
+library(klaR) # for naive bayes
+tidymodels_prefer()
+```
+
+## Question 1
+
+```{r}
+library(janitor)
+pokemon_og <- read.csv("~/Downloads/homework-6/data/pokemon.csv")
+pokemon <- clean_names(pokemon_og)
+
+classes <- c('Bug', 'Fire', 'Grass', 'Normal', 'Water', 'Psychic')
+pokemon <- filter(pokemon, type_1 %in% classes)
+pokemon$type_1 <- factor(pokemon$type_1)
+pokemon$legendary <- factor(pokemon$legendary)
+
+set.seed(2424)
+pokemon_split <- initial_split(pokemon, prop = 0.80,
+                                strata = type_1)
+pokemon_train <- training(pokemon_split) 
+pokemon_test <- testing(pokemon_split)
+pokemon_folds <- vfold_cv(pokemon_train, v = 5)
+
+pokemon_recipe <- recipe(type_1 ~ ., data = pokemon%>%dplyr::select(type_1,hp:legendary))%>%
+  step_dummy(c("legendary", "generation"))%>%
+  step_center(all_predictors())%>%
+  step_scale(all_predictors())
+```
+
+
+## Question 2
+
+```{r}
+
+```
+
